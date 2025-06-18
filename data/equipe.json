@@ -1,0 +1,140 @@
+[
+  {
+    "id": 1,
+    "name": "Léa Schneider",
+    "role": "Présidente & Fondatrice",
+    "description": "Diplômée en relations internationales, Léa a créé New Horizon en 2018 après son expérience Erasmus en Italie. Elle coordonne les programmes européens et développe les partenariats internationaux.",
+    "image": "https://images.unsplash.com/photo-1494790108755-2616b612b890?q=80&w=300",
+    "email": "presidence@newhorizon-strasbourg.eu",
+    "phone": "03 88 12 34 56",
+    "joinedAt": "2018-03-15",
+    "specialties": ["Programmes Erasmus+", "Relations internationales", "Stratégie"],
+    "quote": "Chaque jeune mérite d'accéder aux opportunités européennes !",
+    "social": {
+      "linkedin": "https://linkedin.com/in/leaschneider",
+      "twitter": "https://twitter.com/leaschneider"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Karim Benali",
+    "role": "Coordinateur mobilité européenne",
+    "description": "Ancien participant Erasmus+ devenu coordinateur, Karim accompagne les jeunes dans leurs projets de mobilité. Il maîtrise parfaitement les démarches administratives européennes.",
+    "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300",
+    "email": "mobilite@newhorizon-strasbourg.eu",
+    "phone": "03 88 12 34 57",
+    "joinedAt": "2019-09-20",
+    "specialties": ["Erasmus+", "Corps Européen de Solidarité", "Accompagnement jeunes"],
+    "quote": "La mobilité européenne m'a transformé, je veux partager cette chance.",
+    "social": {
+      "linkedin": "https://linkedin.com/in/karimbenali"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Anna Kowalski",
+    "role": "Responsable éducation non formelle",
+    "description": "Formatrice certifiée en éducation non formelle, Anna conçoit et anime nos ateliers de développement personnel et professionnel. Elle forme également nos animateurs.",
+    "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=300",
+    "email": "formation@newhorizon-strasbourg.eu",
+    "phone": "03 88 12 34 58",
+    "joinedAt": "2020-01-10",
+    "specialties": ["Éducation non formelle", "Animation", "Développement personnel"],
+    "quote": "Apprendre autrement, c'est grandir en confiance et en autonomie.",
+    "social": {
+      "linkedin": "https://linkedin.com/in/annakowalski"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Mamadou Diallo",
+    "role": "Chargé d'insertion professionnelle",
+    "description": "Conseiller en insertion avec 10 ans d'expérience, Mamadou accompagne individuellement les jeunes vers l'emploi et la formation. Il développe notre réseau d'entreprises partenaires.",
+    "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300",
+    "email": "insertion@newhorizon-strasbourg.eu",
+    "phone": "03 88 12 34 59",
+    "joinedAt": "2021-06-15",
+    "specialties": ["Insertion professionnelle", "Coaching", "Relations entreprises"],
+    "quote": "Chaque parcours est unique, chaque accompagnement est sur mesure.",
+    "social": {
+      "linkedin": "https://linkedin.com/in/mamadoudiallo"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Elena Popescu",
+    "role": "Coordinatrice inclusion sociale",
+    "description": "Travailleuse sociale spécialisée dans l'accompagnement des publics vulnérables, Elena pilote nos actions d'inclusion et veille à l'accessibilité de nos programmes.",
+    "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=300",
+    "email": "inclusion@newhorizon-strasbourg.eu",
+    "phone": "03 88 12 34 60",
+    "joinedAt": "2019-03-20",
+    "specialties": ["Inclusion sociale", "Accompagnement social", "Médiation"],
+    "quote": "L'inclusion, c'est permettre à chacun de trouver sa place dans la société.",
+    "social": {
+      "linkedin": "https://linkedin.com/in/elenapopescu"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Thomas Weber",
+    "role": "Gestionnaire administratif et financier",
+    "description": "Comptable de formation avec une expertise en gestion associative, Thomas supervise la gestion administrative et financière de nos projets européens.",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300",
+    "email": "gestion@newhorizon-strasbourg.eu",
+    "phone": "03 88 12 34 61",
+    "joinedAt": "2020-09-10",
+    "specialties": ["Gestion financière", "Reporting européen", "Administration"],
+    "quote": "Une gestion rigoureuse garantit la pérennité de nos actions.",
+    "social": {
+      "linkedin": "https://linkedin.com/in/thomasweber"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Fatima El Khadir",
+    "role": "Médiatrice interculturelle",
+    "description": "Trilingue (français, arabe, allemand), Fatima facilite l'accès de nos programmes aux jeunes issus de l'immigration et anime nos ateliers interculturels.",
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300",
+    "email": "mediation@newhorizon-strasbourg.eu",
+    "phone": "03 88 12 34 62",
+    "joinedAt": "2021-01-15",
+    "specialties": ["Médiation interculturelle", "Langues", "Animation"],
+    "quote": "La diversité culturelle est une richesse que nous devons valoriser.",
+    "social": {
+      "linkedin": "https://linkedin.com/in/fatimaelkhadir"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Amélie Rousseau",
+    "role": "Chargée de communication",
+    "description": "Journaliste de formation reconvertie dans le secteur associatif, Amélie valorise nos actions et témoignages. Elle gère notre communication multilingue.",
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300",
+    "email": "communication@newhorizon-strasbourg.eu",
+    "phone": "03 88 12 34 63",
+    "joinedAt": "2022-05-20",
+    "specialties": ["Communication", "Rédaction", "Multilinguisme"],
+    "quote": "Raconter nos histoires, c'est inspirer d'autres jeunes à oser.",
+    "social": {
+      "linkedin": "https://linkedin.com/in/amelierousseau",
+      "twitter": "https://twitter.com/amelierousseau"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Marco Rossi",
+    "role": "Volontaire CES - Coordinateur bénévoles",
+    "description": "Volontaire italien du Corps Européen de Solidarité, Marco coordonne notre équipe de bénévoles et apporte sa vision européenne à nos actions.",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300",
+    "email": "benevoles@newhorizon-strasbourg.eu",
+    "phone": "03 88 12 34 64",
+    "joinedAt": "2023-09-01",
+    "specialties": ["Coordination bénévoles", "Animation européenne", "Événementiel"],
+    "quote": "Le volontariat européen, c'est apprendre en servant une cause commune.",
+    "social": {
+      "linkedin": "https://linkedin.com/in/marcorossi",
+      "instagram": "https://instagram.com/marco.ces.strasbourg"
+    }
+  }
+] 
