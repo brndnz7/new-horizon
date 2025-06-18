@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '../../../../lib/prisma';
 
-export async function POST() {
+async function initializeDatabase() {
   try {
     console.log('🚀 Initialisation de la base de données...');
 
@@ -161,7 +161,7 @@ export async function POST() {
       }
     }
 
-    return NextResponse.json({
+    return {
       success: true,
       message: '🎉 Base de données initialisée avec succès !',
       data: {
@@ -174,10 +174,34 @@ export async function POST() {
         username: 'admin',
         password: 'NewHorizon2024!'
       }
-    });
+    };
 
   } catch (error) {
     console.error('❌ Erreur lors de l\'initialisation:', error);
+    throw error;
+  }
+}
+
+// Méthode GET pour appeler depuis le navigateur
+export async function GET() {
+  try {
+    const result = await initializeDatabase();
+    return NextResponse.json(result);
+  } catch (error) {
+    return NextResponse.json({
+      success: false,
+      error: 'Erreur lors de l\'initialisation de la base de données',
+      details: error instanceof Error ? error.message : 'Erreur inconnue'
+    }, { status: 500 });
+  }
+}
+
+// Méthode POST pour compatibilité
+export async function POST() {
+  try {
+    const result = await initializeDatabase();
+    return NextResponse.json(result);
+  } catch (error) {
     return NextResponse.json({
       success: false,
       error: 'Erreur lors de l\'initialisation de la base de données',
