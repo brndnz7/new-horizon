@@ -267,4 +267,4 @@ export async function generateStaticParams() {
   // TEMPORAIREMENT: utiliser JSON jusqu'à ce que la base Supabase soit prête
   const { default: projectsData } = await import('../../../../data/projets.json');
   return projectsData.map(project => ({ slug: project.slug }));
-}
+} 

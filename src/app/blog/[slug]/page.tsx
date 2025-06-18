@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import Card, { CardContent } from '@/components/Card';
 import Button from '@/components/Button';
+import ShareButtons from '@/components/ShareButtons';
 // TEMPORAIREMENT DÉSACTIVÉ: import { prisma } from '@/lib/prisma';
 // FALLBACK pour le développement: import blogData from '@/data/blog.json';
 
@@ -168,29 +169,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
               {/* Partage */}
               <div className="mt-8 pt-8 border-t border-neutral-200 dark:border-neutral-700">
                 <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">Partager cet article</h3>
-                <div className="flex space-x-4">
-                  <Button 
-                    variant="outline" 
-                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`}
-                    className="text-sm"
-                  >
-                    Twitter
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
-                    className="text-sm"
-                  >
-                    Facebook
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
-                    className="text-sm"
-                  >
-                    LinkedIn
-                  </Button>
-                </div>
+                <ShareButtons title={article.title} />
               </div>
             </div>
 
