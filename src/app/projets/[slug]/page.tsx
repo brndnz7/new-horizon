@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import Card, { CardContent } from '@/components/Card';
 import Button from '@/components/Button';
-// TEMPORAIREMENT DÉSACTIVÉ POUR VERCEL: import { prisma } from '@/lib/prisma';
-import projectsData from '@/data/projets.json';
+import { prisma } from '@/lib/prisma';
+// FALLBACK pour le développement: import projectsData from '@/data/projets.json';
 
 interface PageProps {
   params: {
@@ -54,7 +54,9 @@ function renderMarkdown(content: string) {
 }
 
 export default async function ProjectPage({ params }: PageProps) {
-  // TEMPORAIREMENT UTILISER LES DONNÉES JSON POUR VERCEL
+  // TEMPORAIREMENT: utiliser JSON jusqu'à ce que la base Supabase soit prête
+  // TODO: restaurer Prisma une fois les tables créées
+  const projectsData = await import('@/data/projets.json').then(m => m.default);
   const project = projectsData.find(proj => proj.slug === params.slug);
 
   if (!project) {
@@ -266,6 +268,7 @@ export default async function ProjectPage({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-  // TEMPORAIREMENT UTILISER LES DONNÉES JSON POUR VERCEL
+  // TEMPORAIREMENT: utiliser JSON jusqu'à ce que la base Supabase soit prête
+  const projectsData = await import('@/data/projets.json').then(m => m.default);
   return projectsData.map(project => ({ slug: project.slug }));
 }

@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import Card, { CardContent } from '@/components/Card';
 import Button from '@/components/Button';
-// TEMPORAIREMENT DÉSACTIVÉ POUR VERCEL: import { prisma } from '@/lib/prisma';
-import blogData from '@/data/blog.json';
+import { prisma } from '@/lib/prisma';
+// FALLBACK pour le développement: import blogData from '@/data/blog.json';
 
 interface PageProps {
   params: {
@@ -69,7 +69,9 @@ function formatDate(dateString: string) {
 }
 
 export default async function BlogArticlePage({ params }: PageProps) {
-  // TEMPORAIREMENT UTILISER LES DONNÉES JSON POUR VERCEL
+  // TEMPORAIREMENT: utiliser JSON jusqu'à ce que la base Supabase soit prête
+  // TODO: restaurer Prisma une fois les tables créées
+  const blogData = await import('@/data/blog.json').then(m => m.default);
   const article = blogData.find(post => post.slug === params.slug);
 
   if (!article) {
@@ -296,6 +298,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-  // TEMPORAIREMENT UTILISER LES DONNÉES JSON POUR VERCEL
+  // TEMPORAIREMENT: utiliser JSON jusqu'à ce que la base Supabase soit prête
+  const blogData = await import('@/data/blog.json').then(m => m.default);
   return blogData.map(article => ({ slug: article.slug }));
 } 
