@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import Card, { CardContent } from '@/components/Card';
 import Button from '@/components/Button';
-import { prisma } from '@/lib/prisma';
+// TEMPORAIREMENT DÉSACTIVÉ: import { prisma } from '@/lib/prisma';
 // FALLBACK pour le développement: import projectsData from '@/data/projets.json';
 
 interface PageProps {
