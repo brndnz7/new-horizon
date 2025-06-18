@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "cp prisma/schema.vercel.prisma prisma/schema.prisma && npx prisma generate && npx prisma db push && node scripts/migrate-to-cloud.js && next build",
+    "vercel-build": "cp prisma/schema.vercel.prisma prisma/schema.prisma && npx prisma generate && next build",
     "prisma:seed": "node prisma/seed.js",
     "postinstall": "prisma generate"
   },
