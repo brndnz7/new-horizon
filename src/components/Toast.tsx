@@ -49,9 +49,13 @@ export default function Toast({ message, type, isVisible, onClose }: ToastProps)
 
 // Hook personnalisé pour utiliser les toasts facilement
 export function useToast() {
-  const [toast, setToast] = useState({
+  const [toast, setToast] = useState<{
+    message: string;
+    type: 'success' | 'error' | 'info';
+    isVisible: boolean;
+  }>({
     message: '',
-    type: 'info' as const,
+    type: 'info',
     isVisible: false
   });
 

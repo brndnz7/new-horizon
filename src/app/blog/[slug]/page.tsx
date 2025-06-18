@@ -71,7 +71,7 @@ function formatDate(dateString: string) {
 export default async function BlogArticlePage({ params }: PageProps) {
   // TEMPORAIREMENT: utiliser JSON jusqu'à ce que la base Supabase soit prête
   // TODO: restaurer Prisma une fois les tables créées
-  const blogData = await import('@/data/blog.json').then(m => m.default);
+  const { default: blogData } = await import('../../../../data/blog.json');
   const article = blogData.find(post => post.slug === params.slug);
 
   if (!article) {
@@ -299,6 +299,6 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
 export async function generateStaticParams() {
   // TEMPORAIREMENT: utiliser JSON jusqu'à ce que la base Supabase soit prête
-  const blogData = await import('@/data/blog.json').then(m => m.default);
+  const { default: blogData } = await import('../../../../data/blog.json');
   return blogData.map(article => ({ slug: article.slug }));
 } 

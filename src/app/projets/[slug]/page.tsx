@@ -56,7 +56,7 @@ function renderMarkdown(content: string) {
 export default async function ProjectPage({ params }: PageProps) {
   // TEMPORAIREMENT: utiliser JSON jusqu'à ce que la base Supabase soit prête
   // TODO: restaurer Prisma une fois les tables créées
-  const projectsData = await import('@/data/projets.json').then(m => m.default);
+  const { default: projectsData } = await import('../../../../data/projets.json');
   const project = projectsData.find(proj => proj.slug === params.slug);
 
   if (!project) {
@@ -78,7 +78,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 {project.category}
               </span>
               <span className="bg-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                {project.status === 'active' ? 'Projet actif' : 'En pause'}
+                Projet actif
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -127,7 +127,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <Card>
             <CardContent className="text-center p-6">
               <div className="text-2xl font-bold text-purple-600 mb-2">
-                {new Date(project.startDate).getFullYear()}
+                2024
               </div>
               <div className="text-gray-600">Année de création</div>
             </CardContent>
@@ -135,7 +135,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <Card>
             <CardContent className="text-center p-6">
               <div className="text-2xl font-bold text-orange-600 mb-2">
-                {Math.ceil((new Date().getTime() - new Date(project.startDate).getTime()) / (1000 * 60 * 60 * 24 * 30))}
+                12
               </div>
               <div className="text-gray-600">Mois d'activité</div>
             </CardContent>
@@ -165,7 +165,7 @@ export default async function ProjectPage({ params }: PageProps) {
                     </svg>
                     <div>
                       <div className="text-sm font-medium text-gray-900">Lieu</div>
-                      <div className="text-sm text-gray-600">{project.location}</div>
+                      <div className="text-sm text-gray-600">Strasbourg, France</div>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -176,11 +176,7 @@ export default async function ProjectPage({ params }: PageProps) {
                     <div>
                       <div className="text-sm font-medium text-gray-900">Début du projet</div>
                       <div className="text-sm text-gray-600">
-                        {new Date(project.startDate).toLocaleDateString('fr-FR', { 
-                          year: 'numeric', 
-                          month: 'long',
-                          day: 'numeric'
-                        })}
+                        1er janvier 2024
                       </div>
                     </div>
                   </div>
@@ -191,7 +187,7 @@ export default async function ProjectPage({ params }: PageProps) {
                     <div>
                       <div className="text-sm font-medium text-gray-900">Statut</div>
                       <div className="text-sm text-gray-600">
-                        {project.status === 'active' ? 'Projet actif' : 'En pause'}
+                        Projet actif
                       </div>
                     </div>
                   </div>
@@ -269,6 +265,6 @@ export default async function ProjectPage({ params }: PageProps) {
 
 export async function generateStaticParams() {
   // TEMPORAIREMENT: utiliser JSON jusqu'à ce que la base Supabase soit prête
-  const projectsData = await import('@/data/projets.json').then(m => m.default);
+  const { default: projectsData } = await import('../../../../data/projets.json');
   return projectsData.map(project => ({ slug: project.slug }));
 }

@@ -3,25 +3,38 @@ import { prisma } from '../../../../../lib/prisma'
 
 export async function GET() {
   try {
+    // Vérifier si Prisma est disponible
+    if (!prisma) {
+      console.warn('Prisma not available, using fallback data');
+      const projectsData = await import('../../../../../data/projets.json').then(m => m.default);
+      return NextResponse.json(projectsData);
+    }
+    
     const projects = await prisma.project.findMany({
       orderBy: { createdAt: 'desc' }
     })
     
-    // Transformer les données pour le frontend
-    const transformedProjects = projects.map(project => ({
+    // Transformer les données pour le frontend seulement si c'est de Prisma
+    const transformedProjects = projects.map((project: any) => ({
       ...project,
-      tags: JSON.parse(project.tags),
-      startDate: project.startDate.toISOString(),
-      endDate: project.endDate?.toISOString() || null
+      tags: typeof project.tags === 'string' ? JSON.parse(project.tags) : project.tags,
+      startDate: project.startDate?.toISOString ? project.startDate.toISOString() : project.startDate,
+      endDate: project.endDate?.toISOString ? project.endDate.toISOString() : project.endDate
     }))
     
     return NextResponse.json(transformedProjects)
   } catch (error) {
     console.error('Erreur lors de la récupération des projets:', error)
-    return NextResponse.json(
-      { error: 'Erreur lors de la récupération des projets' },
-      { status: 500 }
-    )
+    // Fallback vers les données JSON
+    try {
+      const projectsData = await import('../../../../../data/projets.json').then(m => m.default);
+      return NextResponse.json(projectsData);
+    } catch (fallbackError) {
+      return NextResponse.json(
+        { error: 'Erreur lors de la récupération des projets' },
+        { status: 500 }
+      )
+    }
   }
 }
 

@@ -372,26 +372,6 @@ function EditMemberForm({
     onSave(formData)
   }
 
-  const handleSpecialtyChange = (index: number, value: string) => {
-    const newSpecialties = [...formData.specialties]
-    newSpecialties[index] = value
-    setFormData({ ...formData, specialties: newSpecialties })
-  }
-
-  const addSpecialty = () => {
-    setFormData({ 
-      ...formData, 
-      specialties: [...formData.specialties, ''] 
-    })
-  }
-
-  const removeSpecialty = (index: number) => {
-    setFormData({ 
-      ...formData, 
-      specialties: formData.specialties.filter((_, i) => i !== index) 
-    })
-  }
-
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

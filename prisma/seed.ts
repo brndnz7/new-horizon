@@ -1,3 +1,9 @@
+// TEMPORAIREMENT DÉSACTIVÉ POUR VERCEL BUILD
+// TODO: Réactiver une fois Supabase configuré
+
+console.log('Seed script temporarily disabled for Vercel build');
+
+/*
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -146,4 +152,5 @@ main()
   })
   .finally(async () => {
     await prisma.$disconnect();
-  }); 
+  });
+*/ 

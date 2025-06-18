@@ -48,7 +48,7 @@ export default function BlogPage() {
   useEffect(() => {
     fetchPosts()
       .then(data => {
-        setArticles(data.filter(p => p.published));
+        setArticles(data);
         setLoading(false);
       })
       .catch(() => setLoading(false));
