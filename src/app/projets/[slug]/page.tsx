@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import Card, { CardContent } from '@/components/Card';
 import Button from '@/components/Button';
-import { prisma } from '@/lib/prisma';
+// TEMPORAIREMENT DÉSACTIVÉ POUR VERCEL: import { prisma } from '@/lib/prisma';
+import projectsData from '@/data/projets.json';
 
 interface PageProps {
   params: {
@@ -53,19 +54,16 @@ function renderMarkdown(content: string) {
 }
 
 export default async function ProjectPage({ params }: PageProps) {
-  const project = await prisma.project.findUnique({ where: { slug: params.slug } });
+  // TEMPORAIREMENT UTILISER LES DONNÉES JSON POUR VERCEL
+  const project = projectsData.find(proj => proj.slug === params.slug);
 
   if (!project) {
     notFound();
   }
 
-  const { id } = project;
-
-  const otherProjects = await prisma.project.findMany({
-    where: { id: { not: id } },
-    orderBy: { startDate: 'desc' },
-    take: 2,
-  });
+  const otherProjects = projectsData
+    .filter(proj => proj.slug !== params.slug)
+    .slice(0, 2);
 
   return (
     <>
@@ -268,6 +266,6 @@ export default async function ProjectPage({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const projects = await prisma.project.findMany({ select: { slug: true } });
-  return projects.map(p => ({ slug: p.slug }));
-} 
+  // TEMPORAIREMENT UTILISER LES DONNÉES JSON POUR VERCEL
+  return projectsData.map(project => ({ slug: project.slug }));
+}

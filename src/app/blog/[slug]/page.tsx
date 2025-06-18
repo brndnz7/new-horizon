@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import Card, { CardContent } from '@/components/Card';
 import Button from '@/components/Button';
-import { prisma } from '@/lib/prisma';
+// TEMPORAIREMENT DÉSACTIVÉ POUR VERCEL: import { prisma } from '@/lib/prisma';
+import blogData from '@/data/blog.json';
 
 interface PageProps {
   params: {
@@ -68,24 +69,19 @@ function formatDate(dateString: string) {
 }
 
 export default async function BlogArticlePage({ params }: PageProps) {
-  const article = await prisma.blogPost.findUnique({ where: { slug: params.slug } });
+  // TEMPORAIREMENT UTILISER LES DONNÉES JSON POUR VERCEL
+  const article = blogData.find(post => post.slug === params.slug);
 
-  if (!article || !article.published) {
+  if (!article) {
     notFound();
   }
 
-  const { id } = article;
-
-  const otherArticlesRaw = await prisma.blogPost.findMany({
-    where: { published: true, id: { not: id } },
-    orderBy: { publishedAt: 'desc' },
-    take: 3,
-  });
-
-  const otherArticles = otherArticlesRaw.map(p => ({ ...p, tags: JSON.parse(p.tags ?? '[]') }));
+  const otherArticles = blogData
+    .filter(post => post.slug !== params.slug)
+    .slice(0, 3);
 
   // @ts-ignore
-  article.tags = JSON.parse(article.tags ?? '[]');
+  article.tags = article.tags || [];
 
   return (
     <>
@@ -300,6 +296,6 @@ export default async function BlogArticlePage({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const articles = await prisma.blogPost.findMany({ where: { published: true }, select: { slug: true } });
-  return articles.map(a => ({ slug: a.slug }));
+  // TEMPORAIREMENT UTILISER LES DONNÉES JSON POUR VERCEL
+  return blogData.map(article => ({ slug: article.slug }));
 } 
