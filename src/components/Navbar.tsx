@@ -51,23 +51,23 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo New Horizon (PNG unique) */}
           <Link href="/" className="flex items-center group">
-            <img src="/logos/logo-clair.png" alt="New Horizon" className="h-14 w-auto transition-transform duration-300 group-hover:scale-105 dark:hidden" />
-            <img src="/logos/logo-sombre.png" alt="New Horizon" className="h-12 w-auto transition-transform duration-300 group-hover:scale-105 hidden dark:block" />
+            <img src="/logos/logo-clair.png" alt="New Horizon" className="h-12 sm:h-14 w-auto transition-transform duration-300 group-hover:scale-105 dark:hidden" />
+            <img src="/logos/logo-sombre.png" alt="New Horizon" className="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105 hidden dark:block" />
           </Link>
 
           {/* Navigation desktop */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Link 
                 key={link.href}
                 href={link.href} 
-                className={`relative px-4 py-2 rounded-lg font-medium transition-all duration-300 ease-in-out group ${
+                className={`relative px-3 xl:px-4 py-2 rounded-lg font-medium transition-all duration-300 ease-in-out group ${
                   isActiveLink(link.href)
                     ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
                     : 'text-neutral-700 dark:text-neutral-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-neutral-100 dark:hover:bg-neutral-800'
                 }`}
               >
-                <span className="relative z-10">{t(link.key)}</span>
+                <span className="relative z-10 text-sm xl:text-base">{t(link.key)}</span>
                 {/* Effet de hover sous la ligne */}
                 <div className={`absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 transition-all duration-300 ease-in-out transform -translate-x-1/2 ${
                   isActiveLink(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
@@ -78,12 +78,12 @@ export default function Navbar() {
             {/* Bouton Don avec animation */}
             <Link 
               href="/don" 
-              className="relative ml-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:from-accent-600 hover:to-accent-700 hover:shadow-lg hover:shadow-accent-500/20 hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-800 overflow-hidden"
+              className="relative ml-3 xl:ml-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-4 xl:px-6 py-2 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:from-accent-600 hover:to-accent-700 hover:shadow-lg hover:shadow-accent-500/20 hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-800 overflow-hidden text-sm xl:text-base"
             >
               <span className="relative z-10">Faire un don</span>
             </Link>
             
-            <div className="ml-4">
+            <div className="ml-3 xl:ml-4">
               <LanguageSelector />
             </div>
             <div className="ml-2">
@@ -91,8 +91,11 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Menu mobile et bouton thème */}
-          <div className="flex items-center space-x-2 md:hidden">
+          {/* Menu mobile et boutons */}
+          <div className="flex items-center space-x-2 lg:hidden">
+            <div className="hidden sm:block">
+              <LanguageSelector />
+            </div>
             <ThemeToggle />
             <button 
               className={`p-2 rounded-lg text-neutral-400 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-800 transition-all duration-300 ease-in-out ${
@@ -118,8 +121,8 @@ export default function Navbar() {
         </div>
 
         {/* Menu mobile avec animation */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="py-4 border-t border-neutral-200 dark:border-neutral-700">
             <div className="flex flex-col space-y-1">
@@ -138,9 +141,14 @@ export default function Navbar() {
                   {t(link.key)}
                 </Link>
               ))}
-              <div className="flex justify-center my-2">
-                <LanguageSelector />
+              
+              {/* Sélecteur de langue mobile - visible uniquement sur petits écrans */}
+              <div className="flex justify-center py-2 sm:hidden">
+                <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-2">
+                  <LanguageSelector />
+                </div>
               </div>
+              
               <Link 
                 href="/don" 
                 className="mx-4 mt-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 ease-in-out hover:from-accent-600 hover:to-accent-700 hover:shadow-lg hover:translate-y-[-2px]"
