@@ -102,7 +102,7 @@ export default function Home() {
       title: "Corps Européen de Solidarité",
       description: "Devenir organisation d'accueil CES, accueillant nos premiers volontaires européens pour renforcer nos actions locales.",
       icon: <EuropeanIcon />,
-      color: "success" as const
+      color: "secondary" as const
     },
     {
       year: "2022",
@@ -116,7 +116,7 @@ export default function Home() {
       title: "Nouveaux horizons",
       description: "Lancement de nos programmes d'autonomisation des femmes et d'échanges interculturels renforcés.",
       icon: <MobilityIcon />,
-      color: "secondary" as const
+      color: "accent" as const
     }
   ];
 
