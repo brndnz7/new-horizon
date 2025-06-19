@@ -105,15 +105,15 @@ export default function Navbar() {
               aria-expanded={isMenuOpen}
               aria-label="Menu de navigation"
             >
-              <div className="relative w-6 h-6">
-                <span className={`absolute top-1 left-0 w-6 h-0.5 bg-current transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? 'top-3 rotate-45' : ''
+              <div className="relative w-6 h-6 flex flex-col justify-center">
+                <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'rotate-45 translate-y-0.5' : '-translate-y-1'
                 }`}></span>
-                <span className={`absolute top-3 left-0 w-6 h-0.5 bg-current transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? 'opacity-0' : ''
+                <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'opacity-0' : 'my-1'
                 }`}></span>
-                <span className={`absolute top-5 left-0 w-6 h-0.5 bg-current transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? 'top-3 -rotate-45' : ''
+                <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? '-rotate-45 -translate-y-0.5' : 'translate-y-1'
                 }`}></span>
               </div>
             </button>
